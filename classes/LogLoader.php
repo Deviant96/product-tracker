@@ -51,9 +51,8 @@ class LogLoader
         $sql = "SELECT a.product_log_id, a.log_date, b.product_name, c.price, d.stock_available 
                 FROM product_log AS a 
                 INNER JOIN product AS b ON a.product_id = b.product_id 
-                INNER JOIN price AS c ON c.product_id = b.product_id
-                INNER JOIN stock AS d ON d.product_id = b.product_id
-                GROUP BY a.product_log_id, b.product_name, c.price, d.stock_available
+                INNER JOIN price AS c ON c.product_log_id = a.product_log_id
+                INNER JOIN stock AS d ON d.product_log_id = a.product_log_id
                 ORDER BY a.product_log_id DESC
                 LIMIT 0, :logsPerPage";
 
@@ -69,9 +68,8 @@ class LogLoader
         $sql = "SELECT a.product_log_id, a.log_date, b.product_name, c.price, d.stock_available 
                 FROM product_log AS a 
                 INNER JOIN product AS b ON a.product_id = b.product_id 
-                INNER JOIN price AS c ON c.product_id = b.product_id
-                INNER JOIN stock AS d ON d.product_id = b.product_id
-                GROUP BY a.product_log_id, b.product_name, c.price, d.stock_available
+                INNER JOIN price AS c ON c.product_log_id = a.product_log_id
+                INNER JOIN stock AS d ON d.product_log_id = a.product_log_id
                 ORDER BY a.product_log_id DESC
                 LIMIT :rowResult, :logsPerPage";
 
